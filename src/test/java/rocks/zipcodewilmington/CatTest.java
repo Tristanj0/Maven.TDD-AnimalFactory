@@ -3,6 +3,9 @@ package rocks.zipcodewilmington;
 import org.junit.Assert;
 import org.junit.Test;
 import rocks.zipcodewilmington.animals.Cat;
+import rocks.zipcodewilmington.animals.Dog;
+import rocks.zipcodewilmington.animals.animal_creation.AnimalFactory;
+import rocks.zipcodewilmington.animals.animal_storage.DogHouse;
 
 import java.util.Date;
 
@@ -40,4 +43,33 @@ public class CatTest {
         Assert.assertEquals(givenId, retrievedId);
     }
 
+    @Test
+    public void setNameTest() {
+        // Given (a name exists and a cat exists)
+        Cat cat = new Cat(null, null, null);
+        String givenName = "Mitsy";
+
+        // When (a cat's name is set to the given name)
+        cat.setName(givenName);
+
+        // Then (we expect to get the given name from the cat)
+        String catName = cat.getName();
+        Assert.assertEquals(catName, givenName);
+    }
+
+    @Test
+    public void speakTest() {
+        //Given
+        String givenName = "Lolly";
+        Date givenDate = new Date();
+        int givenId = 0;
+
+        //When
+        Cat cat = new Cat(givenName, givenDate, givenId);
+        String expectedSpeak = "meow!";
+        String actualSpeak = cat.speak();
+        //Then
+        Assert.assertEquals(expectedSpeak, actualSpeak );
+    }
 }
+

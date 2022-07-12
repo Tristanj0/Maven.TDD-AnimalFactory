@@ -1,5 +1,6 @@
 package rocks.zipcodewilmington;
 
+import org.junit.Assert;
 import org.junit.Test;
 import rocks.zipcodewilmington.animals.Dog;
 import rocks.zipcodewilmington.animals.animal_creation.AnimalFactory;
@@ -20,7 +21,7 @@ public class DogHouseTest {
     @Test
     public void testGetNumberOfDogs() {
         // Given (some
-        String name = "Milo";
+        String name = "Buster";
         Date birthDate = new Date();
         Dog animal = AnimalFactory.createDog(name, birthDate);
         DogHouse.clear();
@@ -30,5 +31,21 @@ public class DogHouseTest {
 
         // Then
         DogHouse.getNumberOfDogs();
+    }
+
+    @Test
+    public void getIdTest() {
+        //Given (ID of dog)
+        String givenName = "Spike";
+        Date givenDate = new Date();
+        int givenId = 90;
+
+        //When (Makes new ID)
+        Dog dog = new Dog(givenName, givenDate, givenId);
+        int actualId = dog.getId();
+
+        //Then (Starts the test)
+        Assert.assertEquals(givenId, actualId);
+
     }
 }
